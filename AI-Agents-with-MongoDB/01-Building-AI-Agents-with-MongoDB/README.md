@@ -64,7 +64,7 @@ Before using the agent, you must load the MongoDB documentation data into your d
 uv run data.py
 ```
 
-This script loads two Hugging Face datasets, [`mongodb-docs`](https://huggingface.co/datasets/MongoDB/mongodb-docs) (full docs) and [`mongodb-docs-embedded`](https://huggingface.co/datasets/MongoDB/mongodb-docs-embedded) (chunked docs), into your MongoDB instance. Full documents go into `full_docs`; chunked docs are embedded via VoyageAI ([`voyage-3-lite`](https://blog.voyageai.com/2024/09/18/voyage-3/)) and saved to `chunked_docs`. Finally, it creates a [`vector_index`](https://github.com/mongodb-university/curriculum/blob/main/AI-Agents-with-MongoDB/01-Building-AI-Agents-with-MongoDB/data.py#L41-L54) on the `embedding` field for semantic search. See [Attribution](#attribution) for dataset licenses.
+This script loads two Hugging Face datasets, [`mongodb-docs`](https://huggingface.co/datasets/MongoDB/mongodb-docs) (full docs) and [`mongodb-docs-embedded`](https://huggingface.co/datasets/MongoDB/mongodb-docs-embedded) (chunked docs), into your MongoDB instance. Full documents go into `full_docs`; chunked docs are embedded via VoyageAI ([`voyage-3-lite`](https://blog.voyageai.com/2024/09/18/voyage-3/)) and saved to `chunked_docs`. Finally, it creates a [`vector_index`](https://github.com/mongodb-university/curriculum/blob/main/AI-Agents-with-MongoDB/01-Building-AI-Agents-with-MongoDB/data.py#L41-L54) on the `embedding` field for semantic search. See [Attribution](#attribution) for more information.
 
 ## Running the Agent
 
