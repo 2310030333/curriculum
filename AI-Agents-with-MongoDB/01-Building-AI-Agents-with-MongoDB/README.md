@@ -44,7 +44,8 @@ Each lesson builds upon the previous one, providing a gradual learning experienc
 3. Create and initialize a `uv` environment:
 
    ```bash
-   uv init
+   mkdir ai-agents && cd ai-agents && \
+   uv init && uv venv && source .venv/bin/activate
    ```
 
 4. Install the required dependencies:
