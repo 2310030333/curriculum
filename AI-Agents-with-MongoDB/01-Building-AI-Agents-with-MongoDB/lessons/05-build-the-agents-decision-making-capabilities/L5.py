@@ -28,9 +28,7 @@ def init_mongodb():
     
     return mongodb_client, vs_collection, full_collection
 
-# Define the graph state type with messages that can accumulate
 class GraphState(TypedDict):
-    # Define a messages field that keeps track of conversation history
     messages: Annotated[list, add_messages]
     
 def generate_embedding(text: str) -> List[float]:
@@ -70,21 +68,19 @@ def get_information_for_question_answering(user_query: str) -> str:
     
     pipeline = [
         {
-            # Use vector search to find similar documents
             "$vectorSearch": {
-                "index": "vector_index",  # Name of the vector index
-                "path": "embedding",       # Field containing the embeddings
-                "queryVector": query_embedding,  # The query embedding to compare against
-                "numCandidates": 150,      # Consider 150 candidates (wider search)
-                "limit": 5,                # Return only top 5 matches
+                "index": "vector_index", 
+                "path": "embedding",      
+                "queryVector": query_embedding,  
+                "numCandidates": 150,     
+                "limit": 5,             
             }
         },
         {
-            # Project only the fields we need
             "$project": {
-                "_id": 0,                  # Exclude document ID
-                "body": 1,                 # Include the document body
-                "score": {"$meta": "vectorSearchScore"},  # Include the similarity score
+                "_id": 0,            
+                "body": 1,            
+                "score": {"$meta": "vectorSearchScore"},  
             }
         },
     ]
@@ -95,7 +91,7 @@ def get_information_for_question_answering(user_query: str) -> str:
     
     return context
 
-@tool  # Decorator marks this function as a tool the agent can use
+@tool  
 def get_page_content_for_summarization(user_query: str) -> str:
     """
     Retrieve the content of a documentation page for summarization.
