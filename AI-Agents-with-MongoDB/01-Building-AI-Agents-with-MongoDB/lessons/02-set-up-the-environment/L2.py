@@ -23,13 +23,10 @@ def main():
     """
     Main function to initialize and execute the graph.
     """
-    # Initialize MongoDB connections
     mongodb_client, vs_collection, full_collection = init_mongodb()
     
-    # Initialize the ChatOpenAI model with API key
     llm = ChatOpenAI(openai_api_key=key_param.openai_api_key, temperature=0, model="gpt-4o")
     
     
 
-# Execute main function when script is run directly
 main()
