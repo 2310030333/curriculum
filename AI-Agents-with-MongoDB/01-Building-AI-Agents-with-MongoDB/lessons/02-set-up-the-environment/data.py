@@ -8,16 +8,11 @@ chunked_docs = load_dataset("MongoDB/mongodb-docs-embedded")
 
 vo = voyageai.Client(api_key=key_param.voyage_api_key)
 
-# Initialize a MongoDB Python client
 mongodb_client = MongoClient(key_param.mongodb_uri)
 
-#  Database name
 DB_NAME = "ai_agents"
-# Name of the collection with full documents- used for summarization
 FULL_COLLECTION_NAME = "full_docs"
-# Name of the collection for vector search- used for Q&A
 VS_COLLECTION_NAME = "chunked_docs"
-# Name of the vector search index
 VS_INDEX_NAME = "vector_index"
 
 
@@ -26,7 +21,6 @@ vs_collection = db[VS_COLLECTION_NAME]
 full_collection = db[FULL_COLLECTION_NAME]
 
 for doc in docs["train"]:
-    # Insert the document into the full_docs collection
     full_collection.insert_one(doc)
 
 
